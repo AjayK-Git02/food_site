@@ -1,256 +1,152 @@
-# 🍽️ Cloud Kitchen Website
+# 🍽️ Cloud Kitchen - Food Ordering Platform
 
-A modern, full-stack cloud kitchen website with **Next.js 14**, **Supabase**, and **WhatsApp ordering integration**.
+A modern, full-stack food ordering web application built with **Next.js** and **Supabase**. Features a customer-facing weekly menu and a complete admin panel for managing food items, settings, and orders.
 
-![Cloud Kitchen](https://img.shields.io/badge/Next.js-14-black?style=for-the-badge&logo=next.js)
-![Supabase](https://img.shields.io/badge/Supabase-PostgreSQL-green?style=for-the-badge&logo=supabase)
-![License](https://img.shields.io/badge/License-MIT-blue?style=for-the-badge)
-
----
+![License](https://img.shields.io/badge/license-MIT-blue.svg)
+![Next.js](https://img.shields.io/badge/Next.js-16.1-black)
+![Supabase](https://img.shields.io/badge/Supabase-Backend-green)
 
 ## ✨ Features
 
-### 🎨 **Visual Excellence**
-- Premium design with soft orange and green color scheme
-- Smooth animations and micro-interactions
-- Fully responsive (mobile, tablet, desktop)
-- Card-based modern UI with glassmorphism effects
+### 🛍️ Customer Features
+- **Weekly Menu Display** - Browse food items organized by day and time slot
+- **Food Details** - View ingredients, descriptions, and pricing
+- **WhatsApp Ordering** - One-click ordering via WhatsApp
+- **Responsive Design** - Works perfectly on mobile, tablet, and desktop
+- **Modern UI** - Clean, professional design with smooth animations
 
-### 🏠 **Public Pages**
-- **Home Page**: Weekly menu grid, today's special slider
-- **Day Menu**: Filter by time slots (morning, snacks, evening, dinner)
-- **Food Detail**: Full description, ingredients, pricing
+### 🔐 Admin Panel
+- **Secure Authentication** - Supabase-powered admin login
+- **Dashboard** - Overview of menu statistics
+- **Add Food Items** - Create new dishes with images and details
+- **Manage Menu** - Edit or delete existing food items
+- **Settings** - Update site information and social media links
+- **Image Upload** - Direct upload to Supabase Storage
 
-### 🔐 **Admin Panel**
-- Protected routes with authentication
-- Dashboard with statistics
-- Add/Edit/Delete food items
-- Image upload with preview
-- Site settings management
+## 🚀 Tech Stack
 
-### 📱 **WhatsApp Integration**
-- One-click ordering
-- Auto-filled messages with food name, day, and price
-- Sticky mobile button
+- **Frontend**: Next.js 16.1 (App Router), React 19
+- **Backend**: Supabase (PostgreSQL, Auth, Storage)
+- **Styling**: CSS Modules, Custom Design System
+- **Deployment**: Ready for Vercel deployment
 
-### 🗄️ **Database**
-- Supabase PostgreSQL backend
-- Row-Level Security (RLS)
-- Storage bucket for images
-- Auto-updating timestamps
+## 📋 Prerequisites
 
----
+- Node.js 18+ 
+- npm or yarn
+- Supabase account
 
-## 🚀 Quick Start
+## 🛠️ Installation
 
-### Prerequisites
-- Node.js 18+
-- Supabase account (free tier)
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/AjayK-Git02/food_site.git
+   cd food_site
+   ```
 
-### Installation
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
 
-```bash
-# Clone or navigate to project
-cd cloud-kitchen
+3. **Set up Supabase**
+   - Create a project at [supabase.com](https://supabase.com)
+   - Run the SQL schema from `supabase/schema.sql` in the SQL Editor
+   - Create a `food-images` storage bucket (public)
 
-# Install dependencies
-npm install
+4. **Configure environment variables**
+   
+   Create `.env.local` in the root directory:
+   ```env
+   NEXT_PUBLIC_SUPABASE_URL=your_supabase_url
+   NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
+   ```
 
-# Configure environment variables
-cp .env.local.example .env.local
-# Edit .env.local with your Supabase credentials
+5. **Run the development server**
+   ```bash
+   npm run dev
+   ```
 
-# Run development server
-npm run dev
-```
+6. **Open your browser**
+   
+   Navigate to [http://localhost:3000](http://localhost:3000)
 
-Visit [http://localhost:3000](http://localhost:3000)
-
----
-
-## 📂 Project Structure
+## 📁 Project Structure
 
 ```
 cloud-kitchen/
 ├── app/
-│   ├── components/          # Reusable UI components
-│   │   ├── Header.js
-│   │   ├── Footer.js
-│   │   ├── DayCard.js
-│   │   ├── FoodCard.js
-│   │   ├── WhatsAppButton.js
-│   │   ├── AdminSidebar.js
-│   │   └── ConfirmDialog.js
-│   ├── lib/                 # Helper functions
-│   │   ├── supabase.js      # Database client
-│   │   └── utils.js         # Utilities
-│   ├── day/[id]/           # Day menu page
-│   ├── food/[id]/          # Food detail page
-│   ├── admin/              # Admin panel
-│   │   ├── login/
+│   ├── admin/          # Admin panel pages
 │   │   ├── dashboard/
 │   │   ├── add-food/
 │   │   ├── manage-menu/
-│   │   └── settings/
-│   ├── globals.css         # Design system
-│   ├── layout.js           # Root layout
-│   └── page.js             # Home page
-├── supabase/
-│   ├── schema.sql          # Database schema
-│   └── README.md           # Setup guide
-├── public/                 # Static assets
+│   │   ├── settings/
+│   │   └── login/
+│   ├── components/     # Reusable components
+│   ├── day/           # Day menu pages
+│   ├── food/          # Food detail pages
+│   ├── lib/           # Utilities and Supabase client
+│   └── globals.css    # Global styles
+├── public/            # Static assets
+├── supabase/         # Database schema and docs
 └── package.json
 ```
 
----
-
 ## 🗄️ Database Schema
 
-### Tables
-- **days**: Days of the week
-- **foods**: Food items with details
-- **site_settings**: Website configuration
+The application uses three main tables:
 
-### Storage
-- **food-images**: Public bucket for food photos
+- **`days`** - Weekly day structure
+- **`foods`** - Food items with details
+- **`site_settings`** - Configurable site information
 
-See `supabase/README.md` for detailed setup instructions.
+See `supabase/schema.sql` for the complete schema with RLS policies.
 
----
+## 🔒 Security
 
-## 🎨 Design System
+- Row Level Security (RLS) enabled on all tables
+- Public read access for customer-facing data
+- Authenticated write access for admin operations
+- Secure image upload to Supabase Storage
 
-### Colors
-- **Primary**: #FF8C42 (Soft Orange)
-- **Secondary**: #4CAF50 (Light Green)
-- **Background**: #FFFFFF
-- **Text**: #2C3E50
+## 🚢 Deployment
 
-### Typography
-- **Font**: Inter (Google Fonts)
-- **Weights**: 400, 500, 600, 700
+### Deploy to Vercel
 
-### Animations
-- Fade in/out
-- Slide up
-- Scale
-- Hover lift
-- Pulse (WhatsApp button)
+1. Push your code to GitHub
+2. Visit [vercel.com](https://vercel.com)
+3. Import your repository
+4. Add environment variables
+5. Deploy!
 
----
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/AjayK-Git02/food_site)
 
-## 🔧 Configuration
+## 📝 Environment Variables
 
-### Environment Variables
-
-```env
-NEXT_PUBLIC_SUPABASE_URL=your_supabase_url
-NEXT_PUBLIC_SUPABASE_ANON_KEY=your_anon_key
-```
-
-### Demo Admin Login
-```
-Email: admin@cloudkitchen.com
-Password: admin123
-```
-
----
-
-## 📱 Responsive Breakpoints
-
-- **Mobile**: 0-640px (1 column)
-- **Tablet**: 641-1024px (2 columns)
-- **Desktop**: 1025px+ (3-4 columns)
-
----
-
-## 🧩 Key Components
-
-### DayCard
-Displays day of the week with emoji icon and hover animation.
-
-### FoodCard
-Shows food with image, price, and availability badge.
-
-### WhatsAppButton
-Sticky button with auto-generated order message.
-
-### AdminSidebar
-Responsive navigation with logout functionality.
-
-### ConfirmDialog
-Modal for delete confirmations.
-
----
-
-## 🚀 Deployment
-
-### Vercel (Recommended)
-
-```bash
-npm install -g vercel
-vercel
-```
-
-Add environment variables in Vercel dashboard.
-
-### Other Platforms
-Works on Netlify, Railway, or any Node.js hosting.
-
----
-
-## 🔒 Security Features
-
-✅ Row-Level Security (RLS) policies  
-✅ Admin route protection  
-✅ Authenticated-only mutations  
-✅ Public read access for menu  
-✅ Secure image uploads  
-
----
-
-## 📝 To-Do / Roadmap
-
-- [ ] Real-time order notifications
-- [ ] Email order confirmations
-- [ ] Customer reviews
-- [ ] Multi-language support
-- [ ] Advanced analytics dashboard
-
----
+| Variable | Description |
+|----------|-------------|
+| `NEXT_PUBLIC_SUPABASE_URL` | Your Supabase project URL |
+| `NEXT_PUBLIC_SUPABASE_ANON_KEY` | Your Supabase anon/public key |
 
 ## 🤝 Contributing
 
-Contributions welcome! Please:
-1. Fork the repository
-2. Create feature branch
-3. Commit changes
-4. Open pull request
-
----
+Contributions are welcome! Feel free to open issues or submit pull requests.
 
 ## 📄 License
 
-MIT License - feel free to use for personal or commercial projects.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 👨‍💻 Author
+
+**AjayK-Git02**
+- GitHub: [@AjayK-Git02](https://github.com/AjayK-Git02)
+
+## 🙏 Acknowledgments
+
+- Next.js team for the amazing framework
+- Supabase for the backend infrastructure
+- All contributors and users
 
 ---
 
-## 💬 Support
-
-For issues or questions:
-- Check `supabase/README.md` for setup help
-- Review troubleshooting section
-- Open an issue on GitHub
-
----
-
-## 🌟 Credits
-
-Built with:
-- [Next.js 14](https://nextjs.org)
-- [Supabase](https://supabase.com)
-- [React](https://react.dev)
-
----
-
-**Made with ❤️ for cloud kitchens everywhere**
+**⭐ Star this repo if you find it helpful!**
