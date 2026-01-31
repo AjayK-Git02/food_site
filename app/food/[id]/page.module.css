@@ -60,6 +60,14 @@
     box-shadow: var(--shadow-md);
 }
 
+.backBtn span {
+    transition: transform var(--transition-base);
+}
+
+.backBtn:hover span {
+    transform: translateX(-4px);
+}
+
 /* === CONTENT === */
 .content {
     margin-top: calc(var(--spacing-lg) * -1);

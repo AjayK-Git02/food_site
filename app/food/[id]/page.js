@@ -69,7 +69,7 @@ export default function FoodDetailPage() {
                     onClick={() => router.back()}
                     className={`btn ${styles.backBtn}`}
                 >
-                    ← Back to Menu
+                    <span>←</span> Back to Menu
                 </button>
                 <div className={styles.heroOverlay}></div>
             </div>
