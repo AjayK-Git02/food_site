@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
+import { supabase } from '../lib/supabase';
 import AdminSidebar from '../components/AdminSidebar';
 import styles from './layout.module.css';
 
@@ -11,13 +12,29 @@ export default function AdminLayout({ children }) {
     const [isAuthenticated, setIsAuthenticated] = useState(false);
 
     useEffect(() => {
-        // Check authentication
-        const authStatus = localStorage.getItem('isAdminAuthenticated');
-        if (!authStatus && !window.location.pathname.includes('/admin/login')) {
-            router.push('/admin/login');
-        } else {
-            setIsAuthenticated(true);
-        }
+        // Check actual Supabase session
+        const checkAuth = async () => {
+            const { data: { session } } = await supabase.auth.getSession();
+            if (!session && !window.location.pathname.includes('/admin/login')) {
+                router.push('/admin/login');
+            } else if (session) {
+                setIsAuthenticated(true);
+            }
+        };
+
+        checkAuth();
+
+        // Listen for auth changes (logout/login)
+        const { data: { subscription } } = supabase.auth.onAuthStateChange((event, session) => {
+            if (!session && !window.location.pathname.includes('/admin/login')) {
+                router.push('/admin/login');
+                setIsAuthenticated(false);
+            } else if (session) {
+                setIsAuthenticated(true);
+            }
+        });
+
+        return () => subscription.unsubscribe();
     }, []);
 
     // Don't show sidebar on login page

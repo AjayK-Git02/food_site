@@ -19,7 +19,6 @@ export default function AdminLoginPage() {
 
         try {
             await signIn(email, password);
-            localStorage.setItem('isAdminAuthenticated', 'true');
             router.push('/admin/dashboard');
         } catch (err) {
             setError(err.message || 'Login failed. Please try again.');

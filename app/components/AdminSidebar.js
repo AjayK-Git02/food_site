@@ -1,10 +1,12 @@
 'use client';
 
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { useRouter, usePathname } from 'next/navigation';
+import { signOut } from '../lib/supabase';
 import styles from './AdminSidebar.module.css';
 
 export default function AdminSidebar({ isOpen, onClose }) {
+    const router = useRouter();
     const pathname = usePathname();
 
     const menuItems = [
@@ -14,9 +16,9 @@ export default function AdminSidebar({ isOpen, onClose }) {
         { path: '/admin/settings', icon: '⚙️', label: 'Settings' },
     ];
 
-    function handleLogout() {
-        localStorage.removeItem('isAdminAuthenticated');
-        window.location.href = '/admin/login';
+    async function handleLogout() {
+        await signOut();
+        router.push('/admin/login');
     }
 
     return (
