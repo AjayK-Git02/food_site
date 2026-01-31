@@ -1,0 +1,160 @@
+.homePage {
+    min-height: 100vh;
+}
+
+/* === HERO SECTION === */
+.hero {
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1920&q=80');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    padding: 8rem 0;
+    margin-bottom: var(--spacing-xl);
+    position: relative;
+    overflow: hidden;
+}
+
+.hero::before {
+    display: none;
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0);
+    }
+
+    100% {
+        transform: translateY(-60px);
+    }
+}
+
+.heroContent {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    padding: var(--spacing-xl) 0;
+}
+
+.heroTitle {
+    font-size: 3rem;
+    color: white;
+    margin-bottom: var(--spacing-md);
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.heroSubtitle {
+    font-size: 1.5rem;
+    color: rgba(255, 255, 255, 0.95);
+    margin-bottom: var(--spacing-lg);
+}
+
+/* === WEEKLY MENU SECTION === */
+.weeklyMenu {
+    padding: var(--spacing-xl) 0;
+}
+
+.sectionTitle {
+    color: var(--text-primary);
+    margin-bottom: var(--spacing-sm);
+}
+
+.sectionSubtitle {
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+    margin-bottom: var(--spacing-lg);
+}
+
+.daysGrid {
+    margin-top: var(--spacing-lg);
+}
+
+/* === SPECIAL SECTION === */
+.specialSection {
+    padding: var(--spacing-xl) 0;
+    background: var(--surface);
+    margin-top: var(--spacing-xl);
+}
+
+.specialSlider {
+    display: flex;
+    gap: var(--spacing-md);
+    overflow-x: auto;
+    padding: var(--spacing-md) 0;
+    scroll-snap-type: x mandatory;
+}
+
+.specialCard {
+    min-width: 300px;
+    flex-shrink: 0;
+    scroll-snap-align: start;
+    text-align: center;
+    padding: var(--spacing-xl);
+}
+
+.specialIcon {
+    font-size: 4rem;
+    margin-bottom: var(--spacing-md);
+}
+
+/* === STICKY WHATSAPP === */
+.stickyWhatsApp {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .heroTitle {
+        font-size: 2rem;
+    }
+
+    .heroSubtitle {
+        font-size: 1.1rem;
+    }
+
+    .stickyWhatsApp {
+        display: block;
+    }
+}
+
+/* === SPECIAL SLIDE ITEMS === */
+.specialSlideItem {
+    min-width: 280px;
+    background: white;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-md);
+    overflow: hidden;
+    transition: transform var(--transition-base);
+    text-decoration: none;
+    /* Remove underline from link */
+    color: var(--text-primary);
+    /* Ensure text color is correct */
+    display: block;
+    /* Ensure link behaves like a block card */
+}
+
+.specialSlideItem:hover {
+    transform: translateY(-5px);
+}
+
+.specialImageWrapper {
+    height: 180px;
+    width: 100%;
+}
+
+.specialImageWrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.specialContent {
+    padding: var(--spacing-md);
+    text-align: left;
+    /* Match FoodCard alignment */
+}
+
+.specialContent h3 {
+    margin-bottom: var(--spacing-xs);
+    font-size: 1.25rem;
+    color: var(--text-primary);
+    font-weight: 700;
+}

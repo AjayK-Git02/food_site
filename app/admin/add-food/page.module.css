@@ -1,0 +1,64 @@
+.addFoodPage {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.pageTitle {
+    margin-bottom: var(--spacing-lg);
+}
+
+.form {
+    padding: var(--spacing-xl);
+}
+
+.formGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-md);
+}
+
+.imagePreview {
+    margin-top: var(--spacing-sm);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    max-width: 300px;
+}
+
+.imagePreview img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.toggleWrapper {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+}
+
+.toggleLabel {
+    font-weight: 600;
+    color: var(--text-secondary);
+}
+
+.message {
+    padding: var(--spacing-sm) var(--spacing-md);
+    border-radius: var(--radius-md);
+    font-weight: 500;
+    margin-bottom: var(--spacing-md);
+    animation: fadeIn var(--transition-base);
+}
+
+.message.success {
+    background: rgba(76, 175, 80, 0.1);
+    border: 1px solid var(--success);
+    color: var(--success);
+}
+
+.message.error {
+    background: rgba(239, 83, 80, 0.1);
+    border: 1px solid var(--error);
+    color: var(--error);
+}

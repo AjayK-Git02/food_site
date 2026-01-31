@@ -1,0 +1,85 @@
+.manageMenuPage {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.pageTitle {
+    margin-bottom: var(--spacing-lg);
+}
+
+.tableWrapper {
+    padding: 0;
+    overflow-x: auto;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table thead {
+    background: var(--surface);
+}
+
+.table th {
+    text-align: left;
+    padding: var(--spacing-md);
+    font-weight: 600;
+    color: var(--text-primary);
+    border-bottom: 2px solid var(--border);
+}
+
+.table tbody tr {
+    border-bottom: 1px solid var(--border);
+    transition: background var(--transition-fast);
+}
+
+.table tbody tr:hover {
+    background: var(--surface);
+}
+
+.table td {
+    padding: var(--spacing-md);
+}
+
+.foodName {
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.timeSlot {
+    text-transform: capitalize;
+    color: var(--text-secondary);
+}
+
+.price {
+    font-weight: 600;
+    color: var(--primary);
+}
+
+.actions {
+    display: flex;
+    gap: var(--spacing-xs);
+}
+
+.editBtn,
+.deleteBtn {
+    font-size: 0.875rem;
+    padding: var(--spacing-xs) var(--spacing-sm);
+}
+
+@media (max-width: 768px) {
+    .table {
+        font-size: 0.875rem;
+    }
+
+    .table th,
+    .table td {
+        padding: var(--spacing-sm);
+    }
+
+    .actions {
+        flex-direction: column;
+    }
+}
