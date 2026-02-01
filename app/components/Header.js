@@ -2,10 +2,12 @@
 
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
+import { getSettings } from '../lib/supabase';
 import styles from './Header.module.css';
 
 export default function Header() {
     const [scrolled, setScrolled] = useState(false);
+    const [kitchenName, setKitchenName] = useState('Cloud Kitchen');
 
     useEffect(() => {
         const handleScroll = () => {
@@ -15,6 +17,21 @@ export default function Header() {
         window.addEventListener('scroll', handleScroll);
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
+
+    useEffect(() => {
+        loadSettings();
+    }, []);
+
+    async function loadSettings() {
+        try {
+            const settings = await getSettings();
+            if (settings) {
+                setKitchenName(settings.kitchen_name);
+            }
+        } catch (error) {
+            console.error('Error loading settings:', error);
+        }
+    }
 
     return (
         <header className={`${styles.header} ${scrolled ? styles.scrolled : ''}`}>
@@ -27,7 +44,7 @@ export default function Header() {
 
                     {/* Kitchen Name */}
                     <Link href="/" className={styles.brandName}>
-                        <h1>Cloud Kitchen</h1>
+                        <h1>{kitchenName}</h1>
                     </Link>
 
                     {/* Admin Login Button */}
