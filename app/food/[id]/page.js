@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { useParams, useRouter } from 'next/navigation';
-import { getFood } from '../../lib/supabase';
+import { getFood, getSettings } from '../../lib/supabase';
 import { formatCurrency, generateWhatsAppMessage, getWhatsAppUrl } from '../../lib/utils';
 import LoadingSpinner from '../../components/LoadingSpinner';
 import styles from './page.module.css';
@@ -12,9 +12,11 @@ export default function FoodDetailPage() {
     const router = useRouter();
     const [food, setFood] = useState(null);
     const [loading, setLoading] = useState(true);
+    const [whatsappNumber, setWhatsappNumber] = useState('918102110031');
 
     useEffect(() => {
         loadFood();
+        loadWhatsAppNumber();
     }, [params.id]);
 
     async function loadFood() {
@@ -28,11 +30,22 @@ export default function FoodDetailPage() {
         }
     }
 
+    async function loadWhatsAppNumber() {
+        try {
+            const settings = await getSettings();
+            if (settings && settings.whatsapp_number) {
+                setWhatsappNumber(settings.whatsapp_number);
+            }
+        } catch (error) {
+            console.error('Error loading WhatsApp number:', error);
+        }
+    }
+
     function handleWhatsAppOrder() {
         if (!food) return;
 
         const message = generateWhatsAppMessage(food.name, 'today', food.price);
-        const url = getWhatsAppUrl('918102110031', message);
+        const url = getWhatsAppUrl(whatsappNumber, message);
         window.open(url, '_blank');
     }
 
