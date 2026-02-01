@@ -5,24 +5,34 @@ import Link from 'next/link';
 import DayCard from './components/DayCard';
 import WhatsAppButton from './components/WhatsAppButton';
 import LoadingSpinner from './components/LoadingSpinner';
-import { getDays } from './lib/supabase';
+import { getDays, getSettings } from './lib/supabase';
 import styles from './page.module.css';
 
 export default function HomePage() {
     const [days, setDays] = useState([]);
     const [loading, setLoading] = useState(true);
+    const [settings, setSettings] = useState({
+        kitchen_name: 'Fresh Home-Cooked Meals',
+        tagline: 'Delicious food delivered daily to your doorstep'
+    });
 
     useEffect(() => {
-        loadDays();
+        loadData();
     }, []);
 
-    async function loadDays() {
+    async function loadData() {
         try {
-            const data = await getDays();
-            setDays(data);
+            const [daysData, settingsData] = await Promise.all([
+                getDays(),
+                getSettings()
+            ]);
+            setDays(daysData);
+            if (settingsData) {
+                setSettings(settingsData);
+            }
             setLoading(false);
         } catch (error) {
-            console.error('Error loading days:', error);
+            console.error('Error loading data:', error);
             setLoading(false);
         }
     }
@@ -38,10 +48,10 @@ export default function HomePage() {
                 <div className="container">
                     <div className={styles.heroContent}>
                         <h1 className={`${styles.heroTitle} animate-fadeInDown`}>
-                            Fresh Home-Cooked Meals
+                            {settings.kitchen_name}
                         </h1>
                         <p className={`${styles.heroSubtitle} animate-fadeInUp`}>
-                            Delicious food delivered daily to your doorstep
+                            {settings.tagline}
                         </p>
                         <WhatsAppButton />
                     </div>
