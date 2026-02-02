@@ -5,11 +5,12 @@ import Link from 'next/link';
 import DayCard from './components/DayCard';
 import WhatsAppButton from './components/WhatsAppButton';
 import LoadingSpinner from './components/LoadingSpinner';
-import { getDays, getSettings } from './lib/supabase';
+import { getDays, getSettings, getSpecialFoods } from './lib/supabase';
 import styles from './page.module.css';
 
 export default function HomePage() {
     const [days, setDays] = useState([]);
+    const [specials, setSpecials] = useState([]);
     const [loading, setLoading] = useState(true);
     const [settings, setSettings] = useState({
         kitchen_name: 'Fresh Home-Cooked Meals',
@@ -22,11 +23,13 @@ export default function HomePage() {
 
     async function loadData() {
         try {
-            const [daysData, settingsData] = await Promise.all([
+            const [daysData, settingsData, specialsData] = await Promise.all([
                 getDays(),
-                getSettings()
+                getSettings(),
+                getSpecialFoods()
             ]);
             setDays(daysData);
+            setSpecials(specialsData || []);
             if (settingsData) {
                 setSettings(settingsData);
             }
@@ -87,39 +90,21 @@ export default function HomePage() {
                     </p>
 
                     <div className={styles.specialSlider}>
-                        {[
-                            {
-                                id: 's1',
-                                name: 'Hyderabadi Biryani',
-                                price: 250,
-                                image_url: 'https://images.unsplash.com/photo-1633945274405-b6c8069047b0?auto=format&fit=crop&w=800&q=80',
-                                available: true
-                            },
-                            {
-                                id: 's2',
-                                name: 'Cheese Cake',
-                                price: 150,
-                                image_url: 'https://images.unsplash.com/photo-1546833999-b9f581a1996d?auto=format&fit=crop&w=800&q=80', // Reusing dummy for now or different
-                                available: true
-                            },
-                            {
-                                id: 's3',
-                                name: 'Special Thali',
-                                price: 300,
-                                image_url: 'https://images.unsplash.com/photo-1514326640560-7d063ef2aed5?auto=format&fit=crop&w=800&q=80',
-                                available: true
-                            }
-                        ].map(food => (
-                            <Link href={`/food/${food.id}`} key={food.id} className={styles.specialSlideItem}>
-                                <div className={styles.specialImageWrapper}>
-                                    <img src={food.image_url} alt={food.name} loading="lazy" />
-                                </div>
-                                <div className={styles.specialContent}>
-                                    <h3>{food.name}</h3>
-                                    <span className="badge badge-primary">₹{food.price}</span>
-                                </div>
-                            </Link>
-                        ))}
+                        {specials.length > 0 ? (
+                            specials.map(food => (
+                                <Link href={`/food/${food.id}`} key={food.id} className={styles.specialSlideItem}>
+                                    <div className={styles.specialImageWrapper}>
+                                        <img src={food.image_url || 'https://via.placeholder.com/400x300?text=No+Image'} alt={food.name} loading="lazy" />
+                                    </div>
+                                    <div className={styles.specialContent}>
+                                        <h3>{food.name}</h3>
+                                        <span className="badge badge-primary">₹{food.price}</span>
+                                    </div>
+                                </Link>
+                            ))
+                        ) : (
+                            <p className="text-center w-full">No specials for today. Check back later!</p>
+                        )}
                     </div>
                 </div>
             </section>
