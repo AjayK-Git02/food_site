@@ -1,7 +1,14 @@
 .addFoodPage {
-    width: 100%;
-    max-width: 900px;
+    padding: var(--spacing-lg);
+    max-width: 800px;
     margin: 0 auto;
+}
+
+.flexRow {
+    display: flex;
+    gap: var(--spacing-lg);
+    flex-wrap: wrap;
+    align-items: center;
 }
 
 .pageTitle {

@@ -15,7 +15,9 @@ export default function AddFoodPage() {
         price: '',
         description: '',
         ingredients: '',
+        ingredients: '',
         available: true,
+        is_special: false
     });
     const [imageFile, setImageFile] = useState(null);
     const [imagePreview, setImagePreview] = useState('');
@@ -216,20 +218,38 @@ export default function AddFoodPage() {
                 </div>
 
                 {/* Availability Toggle */}
-                <div className={styles.toggleWrapper}>
-                    <label className="label">Availability</label>
-                    <label className="toggle">
-                        <input
-                            type="checkbox"
-                            name="available"
-                            checked={formData.available}
-                            onChange={handleChange}
-                        />
-                        <span className="toggle-slider"></span>
-                    </label>
-                    <span className={styles.toggleLabel}>
-                        {formData.available ? 'Available' : 'Not Available'}
-                    </span>
+                <div className={styles.flexRow}>
+                    <div className={styles.toggleWrapper}>
+                        <label className="label">Availability</label>
+                        <label className="toggle">
+                            <input
+                                type="checkbox"
+                                name="available"
+                                checked={formData.available}
+                                onChange={handleChange}
+                            />
+                            <span className="toggle-slider"></span>
+                        </label>
+                        <span className={styles.toggleLabel}>
+                            {formData.available ? 'Available' : 'Not Available'}
+                        </span>
+                    </div>
+
+                    <div className={styles.toggleWrapper}>
+                        <label className="label">Today's Special</label>
+                        <label className="toggle">
+                            <input
+                                type="checkbox"
+                                name="is_special"
+                                checked={formData.is_special || false}
+                                onChange={handleChange}
+                            />
+                            <span className="toggle-slider"></span>
+                        </label>
+                        <span className={styles.toggleLabel}>
+                            {formData.is_special ? '✨ Special' : 'Regular'}
+                        </span>
+                    </div>
                 </div>
 
                 {/* Message */}
