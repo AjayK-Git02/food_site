@@ -196,6 +196,84 @@ export default function SettingsPage() {
                     </div>
                 </div>
 
+                {/* Pages Content */}
+                <div className={styles.section}>
+                    <h3 className={styles.sectionTitle}>Page Content</h3>
+                    <p className="text-secondary mb-md"><small>Use HTML for formatting (e.g., &lt;p&gt;, &lt;br&gt;, &lt;strong&gt;)</small></p>
+
+                    <div className={styles.formGroup}>
+                        <label htmlFor="about_content" className="label">About Us Page</label>
+                        <textarea
+                            id="about_content"
+                            name="about_content"
+                            className="input textarea"
+                            value={settings.about_content || ''}
+                            onChange={handleChange}
+                            rows={5}
+                        />
+                    </div>
+
+                    <div className={styles.formGroup}>
+                        <label htmlFor="contact_content" className="label">Contact Page (Intro Text)</label>
+                        <textarea
+                            id="contact_content"
+                            name="contact_content"
+                            className="input textarea"
+                            value={settings.contact_content || ''}
+                            onChange={handleChange}
+                            rows={3}
+                        />
+                    </div>
+
+                    <div className={styles.formGroup}>
+                        <label htmlFor="legal_info" className="label">Legal Information</label>
+                        <textarea
+                            id="legal_info"
+                            name="legal_info"
+                            className="input textarea"
+                            value={settings.legal_info || ''}
+                            onChange={handleChange}
+                            rows={3}
+                        />
+                    </div>
+
+                    <div className={styles.formGroup}>
+                        <label htmlFor="privacy_policy" className="label">Privacy Policy</label>
+                        <textarea
+                            id="privacy_policy"
+                            name="privacy_policy"
+                            className="input textarea"
+                            value={settings.privacy_policy || ''}
+                            onChange={handleChange}
+                            rows={5}
+                        />
+                    </div>
+
+                    <div className={styles.formGroup}>
+                        <label htmlFor="terms_of_service" className="label">Terms of Service</label>
+                        <textarea
+                            id="terms_of_service"
+                            name="terms_of_service"
+                            className="input textarea"
+                            value={settings.terms_of_service || ''}
+                            onChange={handleChange}
+                            rows={5}
+                        />
+                    </div>
+
+                    <div className={styles.formGroup}>
+                        <label htmlFor="refund_policy" className="label">Refund Policy</label>
+                        <textarea
+                            id="refund_policy"
+                            name="refund_policy"
+                            className="input textarea"
+                            value={settings.refund_policy || ''}
+                            onChange={handleChange}
+                            rows={5}
+                        />
+                    </div>
+                </div>
+
                 {/* Copyright */}
                 <div className={styles.section}>
                     <h3 className={styles.sectionTitle}>Footer</h3>
