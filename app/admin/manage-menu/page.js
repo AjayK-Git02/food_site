@@ -23,7 +23,9 @@ export default function ManageMenuPage() {
         price: '',
         description: '',
         ingredients: '',
-        available: true
+        ingredients: '',
+        available: true,
+        is_special: false
     });
     const [imageFile, setImageFile] = useState(null);
 
@@ -57,7 +59,9 @@ export default function ManageMenuPage() {
             price: food.price,
             description: food.description || '',
             ingredients: Array.isArray(food.ingredients) ? food.ingredients.join(', ') : '',
-            available: food.available
+            ingredients: Array.isArray(food.ingredients) ? food.ingredients.join(', ') : '',
+            available: food.available,
+            is_special: food.is_special || false
         });
         setImageFile(null);
         setEditDialog({ isOpen: true, food, loading: false });
@@ -72,7 +76,9 @@ export default function ManageMenuPage() {
             price: '',
             description: '',
             ingredients: '',
-            available: true
+            ingredients: '',
+            available: true,
+            is_special: false
         });
         setImageFile(null);
     }
@@ -179,9 +185,14 @@ export default function ManageMenuPage() {
                                 <td className={styles.timeSlot}>{food.time_slot}</td>
                                 <td className={styles.price}>{formatCurrency(food.price)}</td>
                                 <td>
-                                    <span className={`badge ${food.available ? 'badge-success' : 'badge-error'}`}>
-                                        {food.available ? 'Available' : 'Sold Out'}
-                                    </span>
+                                    <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
+                                        <span className={`badge ${food.available ? 'badge-success' : 'badge-error'}`}>
+                                            {food.available ? 'Available' : 'Sold Out'}
+                                        </span>
+                                        {food.is_special && (
+                                            <span className="badge badge-primary">✨ Special</span>
+                                        )}
+                                    </div>
                                 </td>
                                 <td className={styles.actions}>
                                     <button
@@ -324,15 +335,30 @@ export default function ManageMenuPage() {
                                 )}
                             </div>
 
-                            <div className="form-group" style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-                                <input
-                                    type="checkbox"
-                                    id="edit_available"
-                                    name="available"
-                                    checked={editFormData.available}
-                                    onChange={handleEditFormChange}
-                                />
-                                <label htmlFor="edit_available" style={{ margin: 0 }}>Available</label>
+                            <div className="form-group" style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
+                                <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                                    <input
+                                        type="checkbox"
+                                        id="edit_available"
+                                        name="available"
+                                        checked={editFormData.available}
+                                        onChange={handleEditFormChange}
+                                        style={{ width: '20px', height: '20px' }}
+                                    />
+                                    <label htmlFor="edit_available" style={{ margin: 0 }}>Available</label>
+                                </div>
+
+                                <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                                    <input
+                                        type="checkbox"
+                                        id="edit_is_special"
+                                        name="is_special"
+                                        checked={editFormData.is_special || false}
+                                        onChange={handleEditFormChange}
+                                        style={{ width: '20px', height: '20px' }}
+                                    />
+                                    <label htmlFor="edit_is_special" style={{ margin: 0 }}>✨ Special</label>
+                                </div>
                             </div>
 
                             <div style={{ display: 'flex', gap: '10px', marginTop: '20px' }}>
