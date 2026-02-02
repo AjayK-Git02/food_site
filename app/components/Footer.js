@@ -1,5 +1,6 @@
 'use client';
 
+import Link from 'next/link';
 import { useState, useEffect } from 'react';
 import { getSettings } from '../lib/supabase';
 import styles from './Footer.module.css';
@@ -47,10 +48,11 @@ export default function Footer() {
                     <div className={styles.footerColumn}>
                         <h4>Quick Links</h4>
                         <ul>
-                            <li><a href="/">Home</a></li>
-                            <li><a href="#menu">Weekly Menu</a></li>
-                            <li><a href="#about">About Us</a></li>
-                            <li><a href="#contact">Contact</a></li>
+                            <li><Link href="/">Home</Link></li>
+                            <li><Link href="/#menu">Weekly Menu</Link></li>
+                            <li><Link href="/site/about">About Us</Link></li>
+                            <li><Link href="/site/contact">Contact</Link></li>
+                            <li><Link href="/admin">Admin Login</Link></li>
                         </ul>
                     </div>
 
@@ -58,9 +60,10 @@ export default function Footer() {
                     <div className={styles.footerColumn}>
                         <h4>Legal</h4>
                         <ul>
-                            <li><a href="/privacy">Privacy Policy</a></li>
-                            <li><a href="/terms">Terms of Service</a></li>
-                            <li><a href="/refund">Refund Policy</a></li>
+                            <li><Link href="/site/privacy">Privacy Policy</Link></li>
+                            <li><Link href="/site/terms">Terms of Service</Link></li>
+                            <li><Link href="/site/refund">Refund Policy</Link></li>
+                            <li><Link href="/site/legal">Legal Info</Link></li>
                         </ul>
                     </div>
 
