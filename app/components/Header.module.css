@@ -16,13 +16,20 @@
 .headerContent {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
+    /* Center everything */
     padding: var(--spacing-md) 0;
-    gap: var(--spacing-md);
+    position: relative;
+    gap: var(--spacing-sm);
 }
 
 .logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     text-decoration: none;
+    margin-right: 0;
+    /* Remove auto margin */
     transition: transform var(--transition-base);
 }
 
@@ -36,14 +43,14 @@
 }
 
 .brandName {
-    flex: 1;
-    text-align: center;
     text-decoration: none;
 }
 
 .brandName h1 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary);
     margin: 0;
-    font-size: 1.75rem;
     background: linear-gradient(135deg, var(--primary), var(--secondary));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
