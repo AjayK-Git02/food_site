@@ -47,10 +47,7 @@ export default function Header() {
                         <h1>{kitchenName}</h1>
                     </Link>
 
-                    {/* Admin Login Button */}
-                    <Link href="/admin/login" className="btn btn-primary">
-                        Admin Login
-                    </Link>
+                    {/* Admin Login Button Removed from Header */}
                 </div>
             </div>
         </header>
