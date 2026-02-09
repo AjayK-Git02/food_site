@@ -42,7 +42,7 @@ export default function AdminLoginPage() {
                             type="email"
                             id="email"
                             className="input"
-                            placeholder="admin@cloudkitchen.com"
+                            placeholder="Enter your email"
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
                             required
@@ -55,7 +55,7 @@ export default function AdminLoginPage() {
                             type="password"
                             id="password"
                             className="input"
-                            placeholder="••••••••"
+                            placeholder="Enter your password"
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
                             required
@@ -76,10 +76,8 @@ export default function AdminLoginPage() {
                         {loading ? 'Logging in...' : 'Login'}
                     </button>
 
-                    <div className={styles.demoCredentials}>
-                        <p><strong>Demo Credentials:</strong></p>
-                        <p>Email: admin@cloudkitchen.com</p>
-                        <p>Password: admin123</p>
+                    <div className={styles.securityNote}>
+                        <p><small>🔒 Secure simplified login</small></p>
                     </div>
                 </form>
             </div>
