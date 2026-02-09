@@ -9,7 +9,7 @@ export default function SettingsPage() {
         kitchen_name: 'Cloud Kitchen',
         tagline: 'Fresh Home-Cooked Meals',
         phone: '+91 12345 67890',
-        whatsapp_number: '918102110031',
+        whatsapp_number: '',
         social_links: {
             facebook: '',
             instagram: '',

@@ -7,7 +7,7 @@ import styles from './WhatsAppButton.module.css';
 
 export default function WhatsAppButton({ phoneNumber }) {
     const [isMobile, setIsMobile] = useState(false);
-    const [whatsappNumber, setWhatsappNumber] = useState(phoneNumber || '918102110031');
+    const [whatsappNumber, setWhatsappNumber] = useState(phoneNumber || '');
 
     useEffect(() => {
         setIsMobile(window.innerWidth <= 768);
