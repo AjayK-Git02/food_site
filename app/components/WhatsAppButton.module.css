@@ -2,23 +2,27 @@
     display: inline-flex;
     align-items: center;
     gap: var(--spacing-xs);
-    background: var(--secondary);
-    color: white;
+    background: #4ADE80;
+    /* Modern soft green */
+    color: #064E3B;
+    /* Darker green text for contrast */
     padding: var(--spacing-md) var(--spacing-lg);
     border-radius: var(--radius-full);
     border: none;
     font-weight: 600;
     font-size: 1rem;
     cursor: pointer;
-    box-shadow: var(--shadow-lg);
+    box-shadow: 0 4px 12px rgba(74, 222, 128, 0.3);
+    /* Coloured shadow */
     transition: all var(--transition-base);
     z-index: 50;
 }
 
 .whatsappBtn:hover {
-    background: var(--secondary-dark);
+    background: #22c55e;
+    /* Slightly darker on hover */
     transform: translateY(-2px);
-    box-shadow: var(--shadow-xl);
+    box-shadow: 0 6px 16px rgba(74, 222, 128, 0.4);
 }
 
 .icon {
