@@ -50,6 +50,13 @@ export default function AdminSidebar({ isOpen, onClose }) {
                         </Link>
                     ))}
 
+                    <div className={styles.divider}></div>
+
+                    <Link href="/" className={styles.navItem} onClick={onClose}>
+                        <span className={styles.icon}>🏠</span>
+                        <span className={styles.label}>Back to Website</span>
+                    </Link>
+
                     <button onClick={handleLogout} className={styles.logoutBtn}>
                         <span className={styles.icon}>🚪</span>
                         <span className={styles.label}>Logout</span>
