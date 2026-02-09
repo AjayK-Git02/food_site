@@ -4,14 +4,19 @@
 
 /* === HERO SECTION === */
 .hero {
-    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1920&q=80');
+    /* Added subtle dark overlay for better contrast */
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1920&q=80');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
-    padding: 8rem 0;
+    padding: 10rem 0;
+    /* Increased padding for better vertical spacing */
     margin-bottom: var(--spacing-xl);
     position: relative;
     overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .hero::before {
