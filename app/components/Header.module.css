@@ -34,7 +34,13 @@
 }
 
 .logo:hover {
-    transform: scale(1.1);
+    transform: scale(1.05);
+}
+
+.logoImage {
+    border-radius: 50%;
+    object-fit: cover;
+    transition: transform var(--transition-base);
 }
 
 .logoIcon {
