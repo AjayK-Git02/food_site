@@ -277,7 +277,7 @@ export default function ManageMenuPage() {
                             </div>
 
                             <div className="form-group">
-                                <label htmlFor="edit_price">Price (₹) *</label>
+                                <label htmlFor="edit_price">Price ($) *</label>
                                 <input
                                     type="number"
                                     id="edit_price"

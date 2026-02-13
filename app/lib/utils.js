@@ -1,6 +1,6 @@
 // Generate WhatsApp order message
 export function generateWhatsAppMessage(foodName, day, price) {
-    const message = `Hi! I'd like to order *${foodName}* for *${day}* - ₹${price}`;
+    const message = `Hi! I'd like to order *${foodName}* for *${day}* - $${price}`;
     return encodeURIComponent(message);
 }
 
@@ -11,7 +11,7 @@ export function getWhatsAppUrl(phoneNumber, message) {
 
 // Format currency
 export function formatCurrency(amount) {
-    return `₹${parseFloat(amount).toFixed(2)}`;
+    return `$${parseFloat(amount).toFixed(2)}`;
 }
 
 // Format date

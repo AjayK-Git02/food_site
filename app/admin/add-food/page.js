@@ -154,7 +154,7 @@ export default function AddFoodPage() {
 
                     {/* Price */}
                     <div>
-                        <label htmlFor="price" className="label">Price (₹) *</label>
+                        <label htmlFor="price" className="label">Price ($) *</label>
                         <input
                             type="number"
                             id="price"

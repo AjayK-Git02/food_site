@@ -98,7 +98,7 @@ export default function HomePage() {
                                     </div>
                                     <div className={styles.specialContent}>
                                         <h3>{food.name}</h3>
-                                        <span className="badge badge-primary">₹{food.price}</span>
+                                        <span className="badge badge-primary">${food.price}</span>
                                     </div>
                                 </Link>
                             ))
